@@ -74,6 +74,12 @@ const initialState = {
         },
     ],
     users: [],
+    publishers: [
+        'Nintendo',
+        'Motion Twin',
+        'Activision',
+        'Random Publisher',
+    ],
     isFetching: false,
     error: ''
 }
