@@ -10,7 +10,7 @@ const initialState = {
         {
             name: 'Super Mario Odyssey',
             releaseDate: '10-27-2017',
-            series: 'Super mario',
+            series: 'Super Mario',
             publisher: 'Nintendo',
             developer: 'Nintendo EPD',
             directors: [

@@ -33,5 +33,5 @@ export default connect(mapStateToProps, { getGames })(GameList)
 // styled components
 
 const GameListSection = styled.section`
-
+    border: 1px solid black
 `

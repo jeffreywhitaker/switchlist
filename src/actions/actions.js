@@ -12,7 +12,7 @@ export const getGames = () => dispatch => {
             dispatch({ type: FETCHING_GAMES_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log('something terrible happened')
+            console.log(`unable to load games data: ${err}`)
             dispatch({ type: FETCHING_GAMES_FAILURE, payload: err})
         })
 }
