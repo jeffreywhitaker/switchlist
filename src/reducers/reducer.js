@@ -10,10 +10,19 @@ const initialState = {
         {
             name: 'Super Mario Odyssey',
             releaseDate: '10-27-2017',
+            series: 'Super mario',
             publisher: 'Nintendo',
             developer: 'Nintendo EPD',
+            directors: [
+                'Kenta Motokura'
+            ],
+            composers: [
+                'Naoto Kubo',
+                'Shiho Fujii',
+                'Koji Kondo',
+            ],
             caseImg: 'https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg',
-            hdRumber: true,
+            hdRumble: true,
             multiplayer: true,
             genres: [
                 'platform',
@@ -23,10 +32,15 @@ const initialState = {
         {
             name: 'Dead Cells',
             releaseDate: '08-07-2018',
+            series: null,
             publisher: 'Motion Twin',
             developer: 'Motion Twin',
+            directors: [],
+            composers: [
+                'Yoann Laulan',
+            ],
             caseImg: 'https://www.mobygames.com/images/covers/l/498109-dead-cells-xbox-one-front-cover.jpg',
-            hdRumber: false,
+            hdRumble: false,
             multiplayer: false,
             genres: [
                 'roguelike',
@@ -36,10 +50,20 @@ const initialState = {
         {
             name: 'Fire Emblem: Three Houses',
             releaseDate: '06-26-2019',
+            series: 'Fire Emblem',
             publisher: 'Nintendo',
             developer: 'Intelligent Systems',
+            directors: [
+                'Toshiyuki Kusakihara',
+                'Genki Yokota',
+            ],
+            composers: [
+                'Takeru Kanazaki',
+                'Hiroki Morishita',
+                'Rei Kondoh',
+            ],
             caseImg: 'https://upload.wikimedia.org/wikipedia/en/1/16/Fire_Emblem_Three_Houses.jpg',
-            hdRumber: true,
+            hdRumble: true,
             multiplayer: false,
             genres: [
                 'tactical role-playing'
