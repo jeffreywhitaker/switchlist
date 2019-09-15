@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 
 // import components
@@ -8,6 +8,8 @@ import Home from './components/HomePage'
 import GamePickForm from './components/GamePickForm'
 import GameList from './components/GameList'
 import About from './components/About'
+import Login from './components/Login'
+import UserProfile from './components/UserProfile'
 import Footer from './components/Footer'
 
 
@@ -19,10 +21,25 @@ export default function App() {
       <Route path='/gamelist' component={GamePickForm} />
       <Route path='/gamelist' component={GameList} />
       <Route path='/about' component={About} />
+      <Route path='/login' component={Login} />
+      <ProfileRoute path='/profile' component={UserProfile}/>
       <Footer />
     </AppWrapper>
   )
 }
+
+const ProfileRoute = ({ component: UserProfile, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("token") ? (
+        <UserProfile {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
+    }
+  />
+)
 
 // styled components
 

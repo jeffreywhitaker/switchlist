@@ -11,6 +11,7 @@ function NavBar() {
             <StyledNavLink to={'/'}>Home</StyledNavLink>
             <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
             <StyledNavLink to={'/about'}>About</StyledNavLink>
+            <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
             <StyledNavLink to={'/login'}>Login / Signup</StyledNavLink>
         </nav>
     </NavHeader>

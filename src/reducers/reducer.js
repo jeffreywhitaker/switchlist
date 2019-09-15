@@ -73,7 +73,7 @@ const initialState = {
             ]
         },
     ],
-    users: [],
+    user: [],
     publishers: [
         'Nintendo',
         'Motion Twin',

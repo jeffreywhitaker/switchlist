@@ -13,6 +13,15 @@ function GameList({ games, getGames }) {
 
   return (
     <GameListSection>
+        <ResultsPerPageDiv>
+            <span>Results per page</span>
+            <select name='results per page'>
+                <option>10</option>
+                <option>25</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </ResultsPerPageDiv>
         {games.map(game => {
             return <GameCard game={game} key={game.name} />
         })}
@@ -34,4 +43,9 @@ export default connect(mapStateToProps, { getGames })(GameList)
 
 const GameListSection = styled.section`
     border: 1px solid black
+`
+
+const ResultsPerPageDiv = styled.div`
+    display: flex
+    justify-content: flex-right
 `
