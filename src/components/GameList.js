@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import GameCard from './GameCard'
+import { getGames } from '../actions/actions'
 
 
-function GameList({ games }) {
+function GameList({ games, getGames }) {
+    useEffect(() => {
+        getGames()
+    }, [getGames])
+
   return (
     <GameListSection>
         {games.map(game => {
-            return <GameCard game={game} />
+            return <GameCard game={game} key={game.name} />
         })}
     </GameListSection>
   )
@@ -23,7 +28,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(GameList)
+export default connect(mapStateToProps, { getGames })(GameList)
 
 // styled components
 

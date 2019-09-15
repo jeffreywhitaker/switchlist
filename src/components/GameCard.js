@@ -6,7 +6,7 @@ function GameCard({ game }) {
   return (
     <GameCardDiv>
         <h2>{game.name}</h2>
-        <img src={game.caseImg} alt='game case' />
+        <GameCoverImg src={game.caseImg} alt='game case' />
         <p>Published by {game.publisher}</p>
         <p>Released {game.releaseDate}</p>
         <p>Genres: {game.genres.join(', ')}</p>
@@ -22,4 +22,8 @@ const GameCardDiv = styled.div`
     padding: 20px
     margin: 20px
     border: 1px solid black
+`
+
+const GameCoverImg = styled.img`
+    width: 100px
 `
