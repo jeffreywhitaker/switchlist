@@ -1,8 +1,8 @@
-import {
-    FETCHING_GAMES_START,
-    FETCHING_GAMES_SUCCESS,
-    FETCHING_GAMES_FAILURE
-} from '../actions/actions'
+// import {
+//     FETCHING_GAMES_START,
+//     FETCHING_GAMES_SUCCESS,
+//     FETCHING_GAMES_FAILURE
+// } from '../actions/actions'
 
 
 const initialState = {
@@ -24,6 +24,7 @@ const initialState = {
             caseImg: 'https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg',
             hdRumble: true,
             multiplayer: true,
+            cloudSaves: true,
             genres: [
                 'platform',
                 'action-adventure'
@@ -42,6 +43,7 @@ const initialState = {
             caseImg: 'https://www.mobygames.com/images/covers/l/498109-dead-cells-xbox-one-front-cover.jpg',
             hdRumble: false,
             multiplayer: false,
+            couldSaves: true,
             genres: [
                 'roguelike',
                 'metroidvania'
@@ -65,6 +67,7 @@ const initialState = {
             caseImg: 'https://upload.wikimedia.org/wikipedia/en/1/16/Fire_Emblem_Three_Houses.jpg',
             hdRumble: true,
             multiplayer: false,
+            cloudSaves: true,
             genres: [
                 'tactical role-playing'
             ]
