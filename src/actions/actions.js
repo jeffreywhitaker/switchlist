@@ -6,7 +6,7 @@ export const FETCHING_GAMES_FAILURE = 'FETCHING_GAMES_FAILURE'
 export const getGames = () => dispatch => {
     dispatch({ type: FETCHING_GAMES_START})
     axios
-        .get('')
+        .get('http://localhost:5000/gamelist')
         .then(res => {
             console.log(res)
             dispatch({ type: FETCHING_GAMES_SUCCESS, payload: res.data})
