@@ -1,3 +1,4 @@
+// import dependencies
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
@@ -12,7 +13,7 @@ import Login from './components/Login'
 import UserProfile from './components/UserProfile'
 import Footer from './components/Footer'
 
-
+// renders the App component
 export default function App() {
   return (
     <AppWrapper className='appWrapper'>
@@ -28,21 +29,21 @@ export default function App() {
   )
 }
 
+// Protected Routes
 const ProfileRoute = ({ component: UserProfile, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      localStorage.getItem("token") ? (
+      localStorage.getItem('token') ? (
         <UserProfile {...props} />
       ) : (
-        <Redirect to="/login" />
+        <Redirect to='/login' />
       )
     }
   />
 )
 
 // styled components
-
 const AppWrapper = styled.div`
   max-width: 1100px
   margin: 0 auto

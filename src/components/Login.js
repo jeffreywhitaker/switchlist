@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosAuth'
 
-function Login() {
+function Login(props) {
  const [credentials, setCredentials] = useState({})
 
 const login = e => {
@@ -9,7 +9,7 @@ const login = e => {
     axiosWithAuth().post('login/endpoint', credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token)
-            this.props.history.push('/')
+            props.history.push('/profile')
         })
 }
 
