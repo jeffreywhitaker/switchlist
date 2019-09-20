@@ -6,7 +6,7 @@ function Login(props) {
 
     const login = e => {
         e.preventDefault()
-        axiosWithAuth().post('login/endpoint', credentials)
+        axiosWithAuth().post('http://localhost:5000/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
                 props.history.push('/profile')
