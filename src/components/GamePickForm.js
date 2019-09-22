@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import { getPublishers } from '../actions/actions'
+
 function GamePickForm({ publishers }) {
+  useEffect(() => {
+    getPublishers()
+  }, [])
+
   return (
     <GamePickFormSection>
       <h3>Search by</h3>
@@ -26,9 +32,9 @@ function GamePickForm({ publishers }) {
 const mapStateToProps = state => {
   return {
     games: state.games,
-    publishers: state.publishers,
-    isFetching: state.isFetching,
-    error: state.error
+    isFetching: state.games.isFetching,
+    error: state.games.error,
+    publishers: state.publishers.list,
   }
 }
 

@@ -10,7 +10,7 @@ const initialCredentials = {
     confirmPassword: ''
 }
 
-function Signup({ postUser }) {
+function Signup({ postUser, history }) {
 
     const [credentials, setCredentials] = useState(initialCredentials)
 
@@ -26,6 +26,7 @@ function Signup({ postUser }) {
     function callSignUp(e) {
         e.preventDefault()
         postUser(credentials)
+        history.push('/gamelist')
     }
 
     return (
@@ -49,12 +50,12 @@ function Signup({ postUser }) {
                 />
                 <input
                     type="password"
-                    name="confirmpassword"
+                    name="confirmPassword"
                     value={credentials.confirmPassword}
                     placeholder='confirm password'
                     onChange={handleChange}
                 />
-                <button>Log in</button>
+                <button>Sign Up</button>
             </form>
         </SignUpDiv>
     )

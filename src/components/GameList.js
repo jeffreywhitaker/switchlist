@@ -22,7 +22,7 @@ function GameList({ games, getGames }) {
                 <option>100</option>
             </select>
         </ResultsPerPageDiv>
-        {games.map(game => {
+        {games.list.map(game => {
             return <GameCard game={game} key={game.name} />
         })}
     </GameListSection>
@@ -32,8 +32,6 @@ function GameList({ games, getGames }) {
 const mapStateToProps = state => {
     return {
       games: state.games,
-      isFetching: state.isFetching,
-      error: state.error
     }
 }
 
