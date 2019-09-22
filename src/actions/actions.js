@@ -8,7 +8,7 @@ export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE'
 export const postUser = (credentials) => dispatch => {
     dispatch({ type: SIGNUP_USER_START})
     axios
-        .post('http://localhost:5000/users', credentials) // fill in URL
+        .post('http://localhost:5000/users', credentials)
         .then(res => {
             console.log(res)
             dispatch({ type: SIGNUP_USER_SUCCESS, payload: res.data})
@@ -27,9 +27,10 @@ export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
 export const userLogin = credentials => dispatch => {
     dispatch({ type: LOGIN_USER_START})
     axios
-        .post('PLACEHOLDER!!!!', credentials) // fill in URL
+        .post('http://localhost:5000/login', credentials)
         .then(res => {
             console.log(res)
+            localStorage.setItem("token", res.data.token)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data})
         })
         .catch(err => {
@@ -37,6 +38,16 @@ export const userLogin = credentials => dispatch => {
             dispatch({ type: LOGIN_USER_FAILURE, payload: err})
         })
 }
+
+// user logout
+export const LOGOUT_USER_START = 'LOGOUT_USER_START'
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
+export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE'
+export const userLogout = () => dispatch => {
+    dispatch({ type: LOGOUT_USER_SUCCESS})
+    localStorage.setItem("token", null)
+}
+
 
 // game actions
 

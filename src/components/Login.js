@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { userLogin } from '../actions/actions'
 
-function Login({ userLogin }) {
-    const [credentials, setCredentials] = useState({})
+function Login({ userLogin, history, login }) {
+    const [credentials, setCredentials] = useState({username: '', password: ''})
 
     const callLogin = e => {
         e.preventDefault()
         userLogin(credentials)
     }
+
+    useEffect(() => {
+        if (login.isSuccessful) {history.push('/gamelist')}
+    }, [login.isSuccessful, history])
 
     const handleValueChange = e => {
         setCredentials( {

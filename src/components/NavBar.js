@@ -1,9 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { userLogout } from '../actions/actions'
 
-function NavBar() {
+
+function NavBar({ login, userLogout }) {
+  const handleLogout = e => {
+    e.preventDefault()
+    userLogout()
+}
+
   return (
     <NavHeader>
         <LogoHeader>SwitchList</LogoHeader>
@@ -12,13 +20,23 @@ function NavBar() {
             <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
             <StyledNavLink to={'/about'}>About</StyledNavLink>
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
-            <StyledNavLink to={'/login'}>Login</StyledNavLink>
+            {
+              login.isSuccessful 
+              ? <StyledNavLink to={'/gamelist'} onClick={handleLogout}>Logout</StyledNavLink>
+              : <StyledNavLink to={'/login'}>Login</StyledNavLink>
+            }
         </nav>
     </NavHeader>
   )
 }
 
-export default NavBar
+const mapStateToProps = state => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps, { userLogout })(NavBar)
 
 // styled components
 
