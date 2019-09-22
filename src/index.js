@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 // import components and CSS
 import App from './App'
-import { reducer } from './reducers/reducer'
+import reducer from './reducers/rootReducer'
 import './index.css'
 
 // Redux dev tools

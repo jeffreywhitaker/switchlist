@@ -10,8 +10,10 @@ import GamePickForm from './components/GamePickForm'
 import GameList from './components/GameList'
 import About from './components/About'
 import Login from './components/Login'
+import Signup from './components/Signup'
 import UserProfile from './components/UserProfile'
 import Footer from './components/Footer'
+import PrivateRoute from './components/PrivateRoute'
 
 // renders the App component
 export default function App() {
@@ -23,25 +25,12 @@ export default function App() {
       <Route path='/gamelist' component={GameList} />
       <Route path='/about' component={About} />
       <Route path='/login' component={Login} />
-      <ProfileRoute path='/profile' component={UserProfile}/>
+      <Route path='/signup' component={Signup} />
+      <PrivateRoute path='/profile' component={UserProfile}/>
       <Footer />
     </AppWrapper>
   )
 }
-
-// Protected Routes
-const ProfileRoute = ({ component: UserProfile, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      localStorage.getItem('token') ? (
-        <UserProfile {...props} />
-      ) : (
-        <Redirect to='/login' />
-      )
-    }
-  />
-)
 
 // styled components
 const AppWrapper = styled.div`

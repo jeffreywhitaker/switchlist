@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from '../utils/axiosAuth'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-function Login(props) {
+import { userLogin } from '../actions/actions'
+
+function Login({ userLogin }) {
     const [credentials, setCredentials] = useState({})
 
-    const login = e => {
+    const callLogin = e => {
         e.preventDefault()
-        axiosWithAuth().post('http://localhost:5000/login', credentials)
-            .then(res => {
-                localStorage.setItem('token', res.data.token)
-                props.history.push('/profile')
-            })
+        userLogin(credentials)
     }
 
-    const handleChange = e => {
+    const handleValueChange = e => {
         setCredentials( {
             ...credentials,
             [e.target.name]: e.target.value,
@@ -22,27 +21,35 @@ function Login(props) {
 
     return (
         <div>
-        <form onSubmit={login}>
-            <p>Username:</p>
-            <input
-                type="text"
-                name="username"
-                value={credentials.username}
-                onChange={handleChange}
-            />
-            <p>Password:</p>
-            <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                onChange={handleChange}
-            />
-            <br/>
-            <br/>
-            <button>Log in</button>
-        </form>
+            <form onSubmit={callLogin}>
+                <p>Username:</p>
+                <input
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    onChange={handleValueChange}
+                />
+                <p>Password:</p>
+                <input
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    onChange={handleValueChange}
+                />
+                <br/>
+                <br/>
+                <button>Log in</button>
+            </form>
+            <h2>Not registered?</h2>
+            <Link to="/signup" >Sign Up!</Link>
         </div>
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+        login: state.login
+    }
+  }
+  
+  export default connect(mapStateToProps, { userLogin })(Login)

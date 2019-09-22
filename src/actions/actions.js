@@ -1,4 +1,42 @@
 import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+
+// sign up user actions
+export const SIGNUP_USER_START = 'SIGNUP_USER_START'
+export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS'
+export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE'
+export const postUser = (credentials) => dispatch => {
+    dispatch({ type: SIGNUP_USER_START})
+    axios
+        .post('PLACEHOLDER!!!!', credentials) // fill in URL
+        .then(res => {
+            console.log(res)
+            dispatch({ type: SIGNUP_USER_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(`unable to load games data: ${err}`)
+            dispatch({ type: SIGNUP_USER_FAILURE, payload: err})
+        })
+}
+
+
+// user login actions
+export const LOGIN_USER_START = 'LOGIN_USER_START'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
+export const userLogin = credentials => dispatch => {
+    dispatch({ type: LOGIN_USER_START})
+    axios
+        .post('PLACEHOLDER!!!!', credentials) // fill in URL
+        .then(res => {
+            console.log(res)
+            dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(`unable to load games data: ${err}`)
+            dispatch({ type: LOGIN_USER_FAILURE, payload: err})
+        })
+}
 
 // game actions
 
@@ -16,24 +54,5 @@ export const getGames = () => dispatch => {
         .catch(err => {
             console.log(`unable to load games data: ${err}`)
             dispatch({ type: FETCHING_GAMES_FAILURE, payload: err})
-        })
-}
-
-// user actions
-
-export const FETCHING_USER_START = 'FETCHING_USER_START'
-export const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
-export const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
-export const getUser = (id) => dispatch => {
-    dispatch({ type: FETCHING_USER_START})
-    axios
-        .get(`http://localhost:5000/users/${id}`)
-        .then(res => {
-            console.log(res)
-            dispatch({ type: FETCHING_USER_SUCCESS, payload: res.data})
-        })
-        .catch(err => {
-            console.log(`unable to load games data: ${err}`)
-            dispatch({ type: FETCHING_USER_FAILURE, payload: err})
         })
 }
