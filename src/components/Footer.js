@@ -1,6 +1,8 @@
+// import dependencies
 import React from 'react'
 import styled from 'styled-components'
 
+// Footer component
 export default function Footer() {
     return (
         <FooterSection>
@@ -11,7 +13,6 @@ export default function Footer() {
 }
 
 // styled components
-
 const FooterSection = styled.section`
     border-top: 1px solid black
     text-align: center

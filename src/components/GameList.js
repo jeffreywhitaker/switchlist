@@ -1,11 +1,13 @@
+// import dependencies
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+// import components and functions
 import GameCard from './GameCard'
 import { getGames } from '../actions/actions'
 
-
+// GameList component
 function GameList({ games, getGames }) {
     useEffect(() => {
         getGames()
@@ -29,12 +31,14 @@ function GameList({ games, getGames }) {
   )
 }
 
+// connect to Redux state
 const mapStateToProps = state => {
     return {
       games: state.games,
     }
 }
 
+// export component
 export default connect(mapStateToProps, { getGames })(GameList)
 
 // styled components

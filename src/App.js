@@ -15,7 +15,7 @@ import UserProfile from './components/UserProfile'
 import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
 
-// renders the App component
+// App component
 export default function App() {
   return (
     <AppWrapper className='appWrapper'>

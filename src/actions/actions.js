@@ -1,7 +1,8 @@
+// import dependencies and functions
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-// sign up user actions
+// sign up/register new user
 export const SIGNUP_USER_START = 'SIGNUP_USER_START'
 export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS'
 export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE'
@@ -20,7 +21,7 @@ export const postUser = (credentials) => dispatch => {
 }
 
 
-// user login actions
+// login existing user
 export const LOGIN_USER_START = 'LOGIN_USER_START'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
@@ -39,7 +40,7 @@ export const userLogin = credentials => dispatch => {
         })
 }
 
-// user logout
+// logout existing user
 export const LOGOUT_USER_START = 'LOGOUT_USER_START'
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
 export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE'
@@ -49,8 +50,7 @@ export const userLogout = () => dispatch => {
 }
 
 
-// game actions
-
+// get list of games
 export const FETCHING_GAMES_START = 'FETCHING_GAMES_START'
 export const FETCHING_GAMES_SUCCESS = 'FETCHING_GAMES_SUCCESS'
 export const FETCHING_GAMES_FAILURE = 'FETCHING_GAMES_FAILURE'
@@ -69,7 +69,6 @@ export const getGames = () => dispatch => {
 }
 
 // get list of publishers
-
 export const FETCHING_PUBLISHERS_START = 'FETCHING_PUBLISHERS_START'
 export const FETCHING_PUBLISHERS_SUCCESS = 'FETCHING_PUBLISHERS_SUCCESS'
 export const FETCHING_PUBLISHERS_FAILURE = 'FETCHING_PUBLISHERS_FAILURE'

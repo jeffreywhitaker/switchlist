@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import { userLogin } from '../actions/actions'
 
@@ -24,7 +25,7 @@ function Login({ userLogin, history, login }) {
     }
 
     return (
-        <div>
+        <LoginDiv>
             <form onSubmit={callLogin}>
                 <p>Username:</p>
                 <input
@@ -46,7 +47,7 @@ function Login({ userLogin, history, login }) {
             </form>
             <h2>Not registered?</h2>
             <Link to="/signup" >Sign Up!</Link>
-        </div>
+        </LoginDiv>
     )
 }
 
@@ -57,3 +58,10 @@ const mapStateToProps = state => {
   }
   
   export default connect(mapStateToProps, { userLogin })(Login)
+
+  // styled components
+
+  const LoginDiv = styled.div`
+  width: 200px
+  margin: 20px auto
+`

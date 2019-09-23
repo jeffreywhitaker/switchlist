@@ -31,30 +31,29 @@ function Signup({ postUser, history }) {
 
     return (
         <SignUpDiv>
-            <br/>
-            <br/>
             <form onSubmit={callSignUp}>
+                <p>Username:</p>
                 <input
                     type="text"
                     name="username"
                     value={credentials.username}
-                    placeholder="desired user name"
                     onChange={handleChange}
                 />
+                <p>Password:</p>
                 <input
                     type="password"
                     name="password"
                     value={credentials.password}
-                    placeholder="password"
                     onChange={handleChange}
                 />
+                <p>Confirm password:</p>
                 <input
                     type="password"
                     name="confirmPassword"
                     value={credentials.confirmPassword}
-                    placeholder='confirm password'
                     onChange={handleChange}
                 />
+                <br/><br/>
                 <button>Sign Up</button>
             </form>
         </SignUpDiv>
