@@ -20,7 +20,7 @@ function NavBar({ login, userLogout }) {
     <NavHeader>
         <LogoHeader>SwitchList</LogoHeader>
         <NavBarNav>
-            <StyledNavLink to={'/'}>Home</StyledNavLink>
+            <StyledNavLink to={'/'} exact>Home</StyledNavLink>
             <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
             <StyledNavLink to={'/about'}>About</StyledNavLink>
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
