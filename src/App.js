@@ -19,7 +19,7 @@ import PrivateRoute from './components/PrivateRoute'
 export default function App() {
   return (
     <AppWrapper className='appWrapper'>
-      <NavBar />
+      <Route path='/' component={NavBar}/>
       <Route exact path='/' component={Home} />
       <Route path='/gamelist' component={GamePickForm} />
       <Route path='/gamelist' component={GameList} />

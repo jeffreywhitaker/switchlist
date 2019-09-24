@@ -8,11 +8,13 @@ import styled from 'styled-components'
 import { userLogout } from '../actions/actions'
 
 // NavBar component
-function NavBar({ login, userLogout }) {
+function NavBar({ login, userLogout, history }) {
+  // handle user logout
   const handleLogout = e => {
     e.preventDefault()
     userLogout()
-    // load modal
+    history.push('/gamelist')
+    // load modal here eventually
   }
 
   return (
@@ -26,7 +28,7 @@ function NavBar({ login, userLogout }) {
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
             {
               login.isLoggedIn 
-              ? <StyledNavLink to={'/gamelist'} onClick={handleLogout}>Logout</StyledNavLink>
+              ? <StyledNavLink onClick={handleLogout}>Logout</StyledNavLink>
               : <StyledNavLink to={'/login'}>Login</StyledNavLink>
             }
         </NavBarNav>

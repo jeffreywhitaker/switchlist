@@ -1,20 +1,37 @@
-import React from 'react'
+// import dependencies
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
-function UserProfile(props){
+// import actions
+import { getUserData } from '../actions/actions'
 
+// user profile component
+function UserProfile(){
+    // get user data on page load
+    useEffect(() => {
+        getUserData()
+    }, [])
 
+    // render the following
     return (
-        <div>user profile test</div>
+        <ProfileWrapper>
+            
+        </ProfileWrapper>
     )
 }
 
+// connect to Redux store
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        isFetching: state.isFetching,
-        error: state.error
+        user: state.user
     }
-  }
-  
-  export default connect(mapStateToProps, { })(UserProfile)
+}
+
+// export component
+export default connect(mapStateToProps, { })(UserProfile)
+
+// styled components
+const ProfileWrapper = styled.section`
+
+`
