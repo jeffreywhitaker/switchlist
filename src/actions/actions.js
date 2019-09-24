@@ -85,3 +85,21 @@ export const getPublishers = () => dispatch => {
             dispatch({ type: FETCHING_PUBLISHERS_FAILURE, payload: err})
         })
 }
+
+// get user preferences data
+export const FETCHING_USER_PREFERENCES_START = 'FETCHING_USER_PREFERENCES_START'
+export const FETCHING_USER_PREFERENCES_SUCCESS = 'FETCHING_USER_PREFERENCES_SUCCESS'
+export const FETCHING_USER_PREFERENCES_FAILURE = 'FETCHING_USER_PREFERENCES_FAILURE'
+export const getUserPreferences = () => dispatch => {
+    dispatch({ type: FETCHING_USER_PREFERENCES_START})
+    axiosWithAuth()
+        .get('  PLACEHOLDER!!!   ') // needs to be implemented in the back end
+        .then(res => {
+            console.log(res)
+            dispatch({ type: FETCHING_USER_PREFERENCES_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(`unable to load user preferences data: ${err}`)
+            dispatch({ type: FETCHING_USER_PREFERENCES_FAILURE, payload: err})
+        })
+}

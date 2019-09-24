@@ -1,19 +1,19 @@
+// import login actions
 import {
     LOGIN_USER_START,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILURE,
-    LOGOUT_USER_START,
     LOGOUT_USER_SUCCESS,
-    LOGOUT_USER_FAILURE
 } from '../actions/actions'
 
-
+// create initial login state
 const initialState = {
     isFetching: false,
     error: '',
-    isSuccessful: false
+    isLoggedIn: false
 }
 
+// export login reducer
 export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_USER_START:
@@ -26,7 +26,7 @@ export const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                isSuccessful: true
+                isLoggedIn: true
             }
         case LOGIN_USER_FAILURE:
             return {
@@ -38,7 +38,7 @@ export const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                isSuccessful: false
+                isLoggedIn: false
             }
         default:
             return state

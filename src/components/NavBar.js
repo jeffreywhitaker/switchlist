@@ -20,12 +20,12 @@ function NavBar({ login, userLogout }) {
     <NavHeader>
         <LogoHeader>SwitchList</LogoHeader>
         <NavBarNav>
-            <StyledNavLink to={'/'} exact>Home</StyledNavLink>
+            <StyledNavLink exact to={'/'}>Home</StyledNavLink>
             <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
             <StyledNavLink to={'/about'}>About</StyledNavLink>
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
             {
-              login.isSuccessful 
+              login.isLoggedIn 
               ? <StyledNavLink to={'/gamelist'} onClick={handleLogout}>Logout</StyledNavLink>
               : <StyledNavLink to={'/login'}>Login</StyledNavLink>
             }

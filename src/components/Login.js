@@ -1,22 +1,29 @@
+// import dependencies
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+// import actions
 import { userLogin } from '../actions/actions'
 
+// login page component
 function Login({ userLogin, history, login }) {
+    // local state login credentials
     const [credentials, setCredentials] = useState({username: '', password: ''})
 
+    // call login function
     const callLogin = e => {
         e.preventDefault()
         userLogin(credentials)
     }
 
+    // if logged in, redirect to game list
     useEffect(() => {
-        if (login.isSuccessful) {history.push('/gamelist')}
-    }, [login.isSuccessful, history])
+        if (login.isLoggedIn) {history.push('/gamelist')}
+    }, [login.isLoggedIn, history])
 
+    // handle form values, save to local state
     const handleValueChange = e => {
         setCredentials( {
             ...credentials,
@@ -24,6 +31,7 @@ function Login({ userLogin, history, login }) {
         })
     }
 
+    // render the following
     return (
         <LoginDiv>
             <form onSubmit={callLogin}>
@@ -51,17 +59,18 @@ function Login({ userLogin, history, login }) {
     )
 }
 
+// connect component to redux store
 const mapStateToProps = state => {
     return {
         login: state.login
     }
-  }
-  
-  export default connect(mapStateToProps, { userLogin })(Login)
+}
 
-  // styled components
+// export component
+export default connect(mapStateToProps, { userLogin })(Login)
 
-  const LoginDiv = styled.div`
+// styled components
+const LoginDiv = styled.div`
   width: 200px
   margin: 20px auto
 `

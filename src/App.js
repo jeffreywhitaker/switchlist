@@ -1,6 +1,6 @@
 // import dependencies
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route} from 'react-router-dom'
 import styled from 'styled-components'
 
 // import components

@@ -22,7 +22,8 @@ export default GameCard
 const GameCardDiv = styled.div`
     padding: 20px
     margin: 20px
-    border: 1px solid black
+    background: #00B0D1
+    border-radius: 10px
 `
 
 const GameCoverImg = styled.img`

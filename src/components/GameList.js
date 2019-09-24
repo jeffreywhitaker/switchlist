@@ -44,10 +44,11 @@ export default connect(mapStateToProps, { getGames })(GameList)
 // styled components
 
 const GameListSection = styled.section`
-    border: 1px solid black
+
 `
 
 const ResultsPerPageDiv = styled.div`
     display: flex
-    justify-content: flex-right
+    justify-content: flex-end
+    margin-right: 30px
 `
