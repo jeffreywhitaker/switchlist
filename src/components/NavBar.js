@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { userLogout } from '../actions/actions'
 
 // NavBar component
-function NavBar({ login, userLogout, history }) {
+function NavBar({ login, user, userLogout, history }) {
   // handle user logout
   const handleLogout = e => {
     e.preventDefault()
@@ -21,6 +21,11 @@ function NavBar({ login, userLogout, history }) {
     <>
     <NavHeader>
         <LogoHeader>SwitchList</LogoHeader>
+        {
+          user.firstName
+            ? <span>Welcome,<br/>{user.firstName}!</span>
+            : <span></span>
+        }
         <NavBarNav>
             <StyledNavLink exact to={'/'}>Home</StyledNavLink>
             <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
@@ -46,7 +51,8 @@ function NavBar({ login, userLogout, history }) {
 // connect Redux state
 const mapStateToProps = state => {
   return {
-    login: state.login
+    login: state.login,
+    user: state.user
   }
 }
 
