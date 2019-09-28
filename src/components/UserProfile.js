@@ -16,7 +16,17 @@ function UserProfile(){
     // render the following
     return (
         <ProfileWrapper>
-            
+            <UserWrapper>
+                <PersonInfoWrapper>
+                    <div>Person Info</div>
+                </PersonInfoWrapper>
+                <UpdateInfoWrapper>
+                    <div>Update Fields</div>
+                </UpdateInfoWrapper>
+            </UserWrapper>
+            <GameTagWrapper>
+                <div>Game Tag Info</div>
+            </GameTagWrapper>
         </ProfileWrapper>
     )
 }
@@ -33,5 +43,33 @@ export default connect(mapStateToProps, { })(UserProfile)
 
 // styled components
 const ProfileWrapper = styled.section`
+    width: 96%
+    margin: 10px auto
+    display: flex
+    flex-direction: column
+`
 
+const UserWrapper = styled.article`
+    height: 500px
+    display: flex
+    justify-content: space-between
+`
+
+const PersonInfoWrapper = styled.article`
+    height: 100%
+    width: 33%
+    border: 1px solid black
+`
+
+const UpdateInfoWrapper = styled.article`
+    height: 100%
+    width: 66%
+    border: 1px solid black
+`
+
+const GameTagWrapper = styled.article`
+    margin-top: 10px
+    height: 400px
+    width: 100%
+    border: 1px solid black
 `
