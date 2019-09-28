@@ -7,10 +7,10 @@ function GameCard({ game }) {
     <GameCardDiv>
         <h2>{game.name}</h2>
         <GameCoverImg src={game.caseImg} alt={`${game.name} cover art`} />
-        <p>Published by {game.publisher}</p>
-        <p>Directed by {game.directors.join(', ')}</p>
+        {/* <p>Published by {game.publisher}</p> */}
+        {/* <p>Directed by {game.directors.join(', ')}</p> */}
         <p>Released {game.releaseDate}</p>
-        <p>Genres: {game.genres.join(', ')}</p>
+        {/* <p>Genres: {game.genres.join(', ')}</p> */}
     </GameCardDiv>
   )
 }
