@@ -64,7 +64,7 @@ const NavHeader = styled.header`
     display: flex
     justify-content: space-around
     align-items: center
-    background: #444afc
+    background: #FF4E44
     border-radius: 10px
     @media (max-width: 800px) {
       flex-direction: column
@@ -74,7 +74,8 @@ const NavHeader = styled.header`
       height: 450px
     }
 `
-    // background: #FF4E44
+    // red   background: #FF4E44
+    // blue  background: #444afc
 
 const LogoHeader = styled.h1`
   font-family: calibri
