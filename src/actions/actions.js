@@ -9,7 +9,7 @@ export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE'
 export const postUser = (credentials) => dispatch => {
     dispatch({ type: SIGNUP_USER_START})
     axios
-        .post('https://switchlistsite-api.herokuapp.com/users', credentials)
+        .post('http://localhost:5000/users', credentials)
         .then(res => {
             console.log(res)
             dispatch({ type: SIGNUP_USER_SUCCESS, payload: res.data})
@@ -28,7 +28,7 @@ export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
 export const userLogin = credentials => dispatch => {
     dispatch({ type: LOGIN_USER_START})
     axios
-        .post('https://switchlistsite-api.herokuapp.com/login', credentials)
+        .post('http://localhost:5000/login', credentials)
         .then(res => {
             console.log(res)
             localStorage.setItem("token", res.data.token)
@@ -57,7 +57,7 @@ export const FETCHING_GAMES_FAILURE = 'FETCHING_GAMES_FAILURE'
 export const getGames = () => dispatch => {
     dispatch({ type: FETCHING_GAMES_START})
     axios
-        .get('https://switchlistsite-api.herokuapp.com/api/gamelist')
+        .get('http://localhost:5000/gamelist')
         .then(res => {
             console.log(res)
             dispatch({ type: FETCHING_GAMES_SUCCESS, payload: res.data})
@@ -75,7 +75,7 @@ export const FETCHING_PUBLISHERS_FAILURE = 'FETCHING_PUBLISHERS_FAILURE'
 export const getPublishers = () => dispatch => {
     dispatch({ type: FETCHING_PUBLISHERS_START})
     axios
-        .get('https://switchlistsite-api.herokuapp.com/publishers')
+        .get('http://localhost:5000/publishers')
         .then(res => {
             console.log(res)
             dispatch({ type: FETCHING_PUBLISHERS_SUCCESS, payload: res.data})
