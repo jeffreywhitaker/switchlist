@@ -64,7 +64,7 @@ const NavHeader = styled.header`
     display: flex
     justify-content: space-around
     align-items: center
-    background: #ff4e44
+    background: #444afc
     border-radius: 10px
     @media (max-width: 800px) {
       flex-direction: column
