@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FRONTEND_URI } from '../config/rootConfig'
+import { gameUrlMaker } from '../utils/gameUrlMaker'
 
 function GameCard({ game }) {
   return (
@@ -8,28 +10,33 @@ function GameCard({ game }) {
       {game.series ? <p>{game.series} series</p> : <p>Not in a series</p>}
       <GameCoverImg src={game.caseImg} alt={`${game.name} cover art`} />
       <p>Released {game.releaseDate}</p>
-      {game.publishers ? (
+      {game.publishers && game.publishers.length > 0 ? (
         <p>
-          Published by
-          {game.publishers.map((publisher) => ` ${publisher.name},`)}
+          Published by&nbsp;
+          {game.publishers.map((publisher) => publisher.name).join(', ')}
         </p>
       ) : null}
-      {game.directors ? (
+      {game.directors && game.directors.length > 0 ? (
         <p>
-          Directed by
-          {game.directors.map((director) => ` ${director.name},`)}
+          Directed by&nbsp;
+          {game.directors.map((director) => director.name).join(', ')}
         </p>
       ) : null}
-      {game.composers ? (
+      {game.composers && game.composers.length > 0 ? (
         <p>
-          Music composed by
-          {game.composers.map((composer) => ` ${composer.name},`)}
+          Music composed by&nbsp;
+          {game.composers.map((composer) => composer.name).join(', ')}
         </p>
       ) : null}
       {game.multiplayer ? <p>Multiplayer: Yes</p> : <p>Multiplayer: No</p>}
       {game.hdRumble ? <p>HD Rumble: Yes</p> : <p>HD Rumble: No</p>}
       {game.cloudSaves ? <p>Cloud Saves: Yes</p> : <p>Cloud Saves: No</p>}
       <p>Genres: {game.genres.join(', ')}</p>
+      <button>
+        <a href={`${FRONTEND_URI}/games/${gameUrlMaker(game.name)}`}>
+          Visit Page
+        </a>
+      </button>
     </GameCardDiv>
   )
 }
