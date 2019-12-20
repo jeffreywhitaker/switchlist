@@ -7,39 +7,39 @@ import styled from 'styled-components'
 import { getUserData } from '../actions/actions'
 
 // user profile component
-function UserProfile(){
-    // get user data on page load
-    useEffect(() => {
-        getUserData()
-    }, [])
+function UserProfile() {
+  // get user data on page load
+  useEffect(() => {
+    getUserData()
+  }, [])
 
-    // render the following
-    return (
-        <ProfileWrapper>
-            <UserWrapper>
-                <PersonInfoWrapper>
-                    <div>Person Info</div>
-                </PersonInfoWrapper>
-                <UpdateInfoWrapper>
-                    <div>Update Fields</div>
-                </UpdateInfoWrapper>
-            </UserWrapper>
-            <GameTagWrapper>
-                <div>Game Tag Info</div>
-            </GameTagWrapper>
-        </ProfileWrapper>
-    )
+  // render the following
+  return (
+    <ProfileWrapper>
+      <UserWrapper>
+        <PersonInfoWrapper>
+          <div>Person Info</div>
+        </PersonInfoWrapper>
+        <UpdateInfoWrapper>
+          <div>Update Fields</div>
+        </UpdateInfoWrapper>
+      </UserWrapper>
+      <GameTagWrapper>
+        <div>Game Tag Info</div>
+      </GameTagWrapper>
+    </ProfileWrapper>
+  )
 }
 
 // connect to Redux store
-const mapStateToProps = state => {
-    return {
-        user: state.user
-    }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
 }
 
 // export component
-export default connect(mapStateToProps, { })(UserProfile)
+export default connect(mapStateToProps, {})(UserProfile)
 
 // styled components
 const ProfileWrapper = styled.section`
