@@ -10,49 +10,64 @@ import { userLogout } from '../actions/actions'
 // NavBar component
 function NavBar({ login, user, userLogout, history }) {
   // handle user logout
-  const handleLogout = e => {
+  const handleLogout = (e) => {
     e.preventDefault()
     userLogout()
     history.push('/gamelist')
     // load modal here eventually
   }
 
+  const handleLoginRedirect = (e) => {
+    e.preventDefault()
+    history.push('/login')
+  }
+
   return (
     <>
-    <NavHeader>
+      <NavHeader>
         <LogoHeader>SwitchList</LogoHeader>
-        {
-          user.firstName
-            ? <span>Welcome,<br/>{user.firstName}!</span>
-            : <span></span>
-        }
+        {user.firstName ? (
+          <span>
+            Welcome,
+            <br />
+            {user.firstName}!
+          </span>
+        ) : (
+          <span></span>
+        )}
         <NavBarNav>
-            <StyledNavLink exact to={'/'}>Home</StyledNavLink>
-            <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
-            <StyledNavLink to={'/about'}>About</StyledNavLink>
+          <StyledNavLink exact to={'/'}>
+            Home
+          </StyledNavLink>
+          <StyledNavLink to={'/gamelist'}>Game List</StyledNavLink>
+          <StyledNavLink to={'/about'}>About</StyledNavLink>
+          {login.isLoggedIn ? (
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
-            {
-              login.isLoggedIn 
-              ? <StyledNavLink onClick={handleLogout}>Logout</StyledNavLink>
-              : <StyledNavLink to={'/login'}>Login</StyledNavLink>
-            }
+          ) : (
+            <StyledNavLink onClick={handleLoginRedirect}>Profile</StyledNavLink>
+          )}
+          {login.isLoggedIn ? (
+            <StyledNavLink onClick={handleLogout}>Logout</StyledNavLink>
+          ) : (
+            <StyledNavLink to={'/login'}>Login</StyledNavLink>
+          )}
         </NavBarNav>
-    </NavHeader>
-    <div className='modal'>
-      <div className='modal-content'>
-        <span className='close'>&times;</span>
-        <p>You have been successfuly logged out.</p>
+      </NavHeader>
+      <div className="modal">
+        <div className="modal-content">
+          <span className="close">&times;</span>
+          <p>You have been successfuly logged out.</p>
+        </div>
       </div>
-    </div>
     </>
   )
 }
 
 // connect Redux state
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     login: state.login,
-    user: state.user
+    user: state.user,
   }
 }
 
@@ -64,7 +79,7 @@ const NavHeader = styled.header`
     display: flex
     justify-content: space-around
     align-items: center
-    background: #444afc
+    background: #FF4E44
     border-radius: 10px
     @media (max-width: 800px) {
       flex-direction: column
@@ -74,8 +89,8 @@ const NavHeader = styled.header`
       height: 450px
     }
 `
-    // red   background: #FF4E44
-    // blue  background: #444afc
+// red   background: #FF4E44
+// blue  background: #444afc
 
 const LogoHeader = styled.h1`
   font-family: calibri

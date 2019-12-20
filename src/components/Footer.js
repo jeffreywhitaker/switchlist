@@ -4,12 +4,12 @@ import styled from 'styled-components'
 
 // Footer component
 export default function Footer() {
-    return (
-        <FooterSection>
-            <p>SwitchList</p>
-            <p>Copyright Jeffrey David Whitaker, 2019</p>
-        </FooterSection>
-    )
+  return (
+    <FooterSection>
+      <p>SwitchList</p>
+      <p>Copyright Jeffrey David Whitaker, 2019</p>
+    </FooterSection>
+  )
 }
 
 // styled components

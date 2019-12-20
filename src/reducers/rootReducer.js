@@ -8,9 +8,9 @@ import { publishersReducer } from './publishersReducer'
 
 // export combined reducers
 export default combineReducers({
-    login: loginReducer,
-    signup: signupReducer,
-    games: gamesReducer,
-    user: userReducer,
-    publishers: publishersReducer
+  login: loginReducer,
+  signup: signupReducer,
+  games: gamesReducer,
+  user: userReducer,
+  publishers: publishersReducer,
 })
