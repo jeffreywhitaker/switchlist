@@ -5,14 +5,9 @@ import styled from 'styled-components'
 
 // import components and functions
 import GameCard from './GameCard'
-import { getGames } from '../actions/actions'
 
 // GameList component
-function GameList({ games, getGames }) {
-  useEffect(() => {
-    getGames()
-  }, [getGames])
-
+function GameList({ games }) {
   return (
     <GameListSection>
       <ResultsPerPageDiv>
@@ -25,7 +20,7 @@ function GameList({ games, getGames }) {
         </select>
       </ResultsPerPageDiv>
       {games.list.map((game) => {
-        return <GameCard game={game} key={game.name} />
+        return <GameCard game={game} key={game.title} />
       })}
     </GameListSection>
   )
@@ -39,7 +34,7 @@ const mapStateToProps = (state) => {
 }
 
 // export component
-export default connect(mapStateToProps, { getGames })(GameList)
+export default connect(mapStateToProps, {})(GameList)
 
 // styled components
 

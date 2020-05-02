@@ -5,26 +5,40 @@ import styled from 'styled-components'
 
 // import functions
 import { getPublishers } from '../actions/actions'
+import { getGames } from '../actions/actions'
 
 // GamePickForm component
-function GamePickForm({ publishers, getPublishers }) {
-  const [filterData, setFilterData] = useState({
+function GamePickForm({ publishers, getPublishers, getGames }) {
+  useEffect(() => {
+    getGames()
+    getPublishers()
+  }, [getGames, getPublishers])
+
+  const defaultFilter = {
     title: '',
     series: '',
-    composers: [],
+    composer: '',
     hdRumble: false,
     multiplayer: false,
     cloudSaves: false,
-    genres: [],
-  })
+    genre: '',
+  }
 
-  useEffect(() => {
-    getPublishers()
-  }, [getPublishers])
+  const [filterData, setFilterData] = useState(defaultFilter)
 
+  // reload games with filter data
   const handleFilter = (e) => {
     e.preventDefault()
-    // needs to filter gamelist results
+    console.log('filterdata', filterData)
+
+    let filterDataToSend = {}
+    // for each key in filterData
+    for (const key in filterData) {
+      if (filterData[key] !== defaultFilter[key]) {
+        filterDataToSend[key] = filterData[key]
+      }
+    }
+    getGames(filterDataToSend)
   }
 
   const handleValueChange = (e) => {
@@ -45,6 +59,7 @@ function GamePickForm({ publishers, getPublishers }) {
           <p>Title</p>
           <input
             type="text"
+            name="title"
             placeholder="all or part of title"
             value={filterData.title}
             onChange={handleValueChange}
@@ -52,7 +67,13 @@ function GamePickForm({ publishers, getPublishers }) {
         </GPFsubDiv>
         <GPFsubDiv>
           <p>Publisher</p>
-          <select name="publisher" placeholder="publisher" size={1}>
+          <input
+            type="text"
+            name="publisher"
+            value={filterData.publisher}
+            onChange={handleValueChange}
+          />
+          {/* <select name="publisher" placeholder="publisher" size={1}>
             <option value=""></option>
             {publishers.list.map((publisher) => {
               return (
@@ -61,12 +82,13 @@ function GamePickForm({ publishers, getPublishers }) {
                 </option>
               )
             })}
-          </select>
+          </select> */}
         </GPFsubDiv>
         <GPFsubDiv>
           <p>Series</p>
           <input
             type="text"
+            name="series"
             value={filterData.series}
             onChange={handleValueChange}
           ></input>
@@ -75,6 +97,7 @@ function GamePickForm({ publishers, getPublishers }) {
           <p>Composers</p>
           <input
             type="text"
+            name="composers"
             value={filterData.composers}
             onChange={handleValueChange}
           ></input>
@@ -85,6 +108,7 @@ function GamePickForm({ publishers, getPublishers }) {
           <p>HD rumble</p>
           <input
             type="checkbox"
+            name="hdRumble"
             value={filterData.hdRumble}
             onChange={handleValueChange}
           ></input>
@@ -93,6 +117,7 @@ function GamePickForm({ publishers, getPublishers }) {
           <p>Multiplayer</p>
           <input
             type="checkbox"
+            name="multiplayer"
             value={filterData.multiplayer}
             onChange={handleValueChange}
           ></input>
@@ -129,7 +154,9 @@ const mapStateToProps = (state) => {
 }
 
 // export component
-export default connect(mapStateToProps, { getPublishers })(GamePickForm)
+export default connect(mapStateToProps, { getPublishers, getGames })(
+  GamePickForm,
+)
 
 // styled components
 

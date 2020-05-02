@@ -44,10 +44,14 @@ function NavBar({ login, user, userLogout, history }) {
           {login.isLoggedIn ? (
             <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
           ) : (
-            <StyledNavLink onClick={handleLoginRedirect}>Profile</StyledNavLink>
+            <StyledNavLink to={''} onClick={handleLoginRedirect}>
+              Profile
+            </StyledNavLink>
           )}
           {login.isLoggedIn ? (
-            <StyledNavLink onClick={handleLogout}>Logout</StyledNavLink>
+            <StyledNavLink to={''} onClick={handleLogout}>
+              Logout
+            </StyledNavLink>
           ) : (
             <StyledNavLink to={'/login'}>Login</StyledNavLink>
           )}

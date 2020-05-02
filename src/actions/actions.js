@@ -53,10 +53,10 @@ export const userLogout = () => (dispatch) => {
 export const FETCHING_GAMES_START = 'FETCHING_GAMES_START'
 export const FETCHING_GAMES_SUCCESS = 'FETCHING_GAMES_SUCCESS'
 export const FETCHING_GAMES_FAILURE = 'FETCHING_GAMES_FAILURE'
-export const getGames = () => (dispatch) => {
+export const getGames = (filterData) => (dispatch) => {
   dispatch({ type: FETCHING_GAMES_START })
   axios
-    .get(AXIOS_URI + '/games/all')
+    .get(AXIOS_URI + '/games/', { params: filterData })
     .then((res) => {
       console.log(res)
       dispatch({ type: FETCHING_GAMES_SUCCESS, payload: res.data })

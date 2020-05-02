@@ -6,9 +6,9 @@ import { gameUrlMaker } from '../utils/gameUrlMaker'
 function GameCard({ game }) {
   return (
     <GameCardDiv>
-      <h2>{game.name}</h2>
+      <h2>{game.title}</h2>
       {game.series ? <p>{game.series} series</p> : <p>Not in a series</p>}
-      <GameCoverImg src={game.caseImg} alt={`${game.name} cover art`} />
+      <GameCoverImg src={game.caseImg} alt={`${game.title} cover art`} />
       <p>Released {game.releaseDate}</p>
       {game.publishers && game.publishers.length > 0 ? (
         <p>
@@ -33,7 +33,7 @@ function GameCard({ game }) {
       {game.cloudSaves ? <p>Cloud Saves: Yes</p> : <p>Cloud Saves: No</p>}
       <p>Genres: {game.genres.join(', ')}</p>
       <button>
-        <a href={`${FRONTEND_URI}/games/${gameUrlMaker(game.name)}`}>
+        <a href={`${FRONTEND_URI}/games/${gameUrlMaker(game.title)}`}>
           Visit Page
         </a>
       </button>
