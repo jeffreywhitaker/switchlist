@@ -67,21 +67,21 @@ export const getGames = (filterData) => (dispatch) => {
     })
 }
 
-// get list of publishers
-export const FETCHING_PUBLISHERS_START = 'FETCHING_PUBLISHERS_START'
-export const FETCHING_PUBLISHERS_SUCCESS = 'FETCHING_PUBLISHERS_SUCCESS'
-export const FETCHING_PUBLISHERS_FAILURE = 'FETCHING_PUBLISHERS_FAILURE'
-export const getPublishers = () => (dispatch) => {
-  dispatch({ type: FETCHING_PUBLISHERS_START })
+// get list of data
+export const FETCHING_DATALIST_START = 'FETCHING_DATALIST_START'
+export const FETCHING_DATALIST_SUCCESS = 'FETCHING_DATALIST_SUCCESS'
+export const FETCHING_DATALIST_FAILURE = 'FETCHING_DATALIST_FAILURE'
+export const getDataList = () => (dispatch) => {
+  dispatch({ type: FETCHING_DATALIST_START })
   axios
-    .get(AXIOS_URI + '/publishers')
+    .get(AXIOS_URI + '/games/datalist')
     .then((res) => {
-      console.log(res)
-      dispatch({ type: FETCHING_PUBLISHERS_SUCCESS, payload: res.data })
+      console.log('datalist response', res)
+      dispatch({ type: FETCHING_DATALIST_SUCCESS, payload: res.data })
     })
     .catch((err) => {
-      console.log(`unable to load publishers data: ${err}`)
-      dispatch({ type: FETCHING_PUBLISHERS_FAILURE, payload: err })
+      console.log(`unable to load data list: ${err}`)
+      dispatch({ type: FETCHING_DATALIST_FAILURE, payload: err })
     })
 }
 

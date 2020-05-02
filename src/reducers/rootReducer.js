@@ -4,7 +4,7 @@ import { loginReducer } from './loginReducer'
 import { signupReducer } from './signupReducer'
 import { gamesReducer } from './gamesReducer'
 import { userReducer } from './userReducer'
-import { publishersReducer } from './publishersReducer'
+import { datalistReducer } from './datalistReducer'
 
 // export combined reducers
 export default combineReducers({
@@ -12,5 +12,5 @@ export default combineReducers({
   signup: signupReducer,
   games: gamesReducer,
   user: userReducer,
-  publishers: publishersReducer,
+  datalist: datalistReducer,
 })

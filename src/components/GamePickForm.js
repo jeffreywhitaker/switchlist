@@ -4,20 +4,20 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 // import functions
-import { getPublishers } from '../actions/actions'
-import { getGames } from '../actions/actions'
+import { getDataList, getGames } from '../actions/actions'
 
 // GamePickForm component
-function GamePickForm({ publishers, getPublishers, getGames }) {
+function GamePickForm({ publishers, composers, getDataList, getGames }) {
   useEffect(() => {
     getGames()
-    getPublishers()
-  }, [getGames, getPublishers])
+    getDataList()
+  }, [getGames, getDataList])
 
   const defaultFilter = {
     title: '',
     series: '',
-    composer: '',
+    publisherId: '',
+    composerId: '',
     hdRumble: false,
     multiplayer: false,
     cloudSaves: false,
@@ -42,17 +42,20 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
   }
 
   const handleValueChange = (e) => {
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value
     setFilterData({
       ...filterData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     })
+    console.log('e target name/value', e.target.name, e.target.value)
   }
 
   return (
-    <GamePickFormSection>
+    <GamePickFormSection onSubmit={handleFilter}>
       <ColumnDiv1>
         <h3>Search by</h3>
-        <button onClick={handleFilter}>Search</button>
+        <button type="submit">Search</button>
       </ColumnDiv1>
       <ColumnDiv>
         <GPFsubDiv>
@@ -67,22 +70,28 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
         </GPFsubDiv>
         <GPFsubDiv>
           <p>Publisher</p>
-          <input
+          {/* <input
             type="text"
             name="publisher"
             value={filterData.publisher}
             onChange={handleValueChange}
-          />
-          {/* <select name="publisher" placeholder="publisher" size={1}>
+          /> */}
+          <select
+            name="publisherId"
+            placeholder="publisher"
+            value={filterData.publisherId}
+            onChange={handleValueChange}
+            size={1}
+          >
             <option value=""></option>
-            {publishers.list.map((publisher) => {
+            {publishers.map((publisher) => {
               return (
-                <option value={publisher} key={publisher}>
-                  {publisher}
+                <option value={publisher._id} key={publisher.name}>
+                  {publisher.name}
                 </option>
               )
             })}
-          </select> */}
+          </select>
         </GPFsubDiv>
         <GPFsubDiv>
           <p>Series</p>
@@ -95,12 +104,22 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
         </GPFsubDiv>
         <GPFsubDiv>
           <p>Composers</p>
-          <input
-            type="text"
-            name="composers"
-            value={filterData.composers}
+          <select
+            name="composerId"
+            placeholder="composer"
+            value={filterData.composerId}
             onChange={handleValueChange}
-          ></input>
+            size={1}
+          >
+            <option value=""></option>
+            {composers.map((composer) => {
+              return (
+                <option value={composer._id} key={composer.name}>
+                  {composer.name}
+                </option>
+              )
+            })}
+          </select>
         </GPFsubDiv>
       </ColumnDiv>
       <ColumnDiv>
@@ -126,6 +145,7 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
           <p>Cloud Saves</p>
           <input
             type="checkbox"
+            name="cloudSaves"
             value={filterData.cloudSaves}
             onChange={handleValueChange}
           ></input>
@@ -136,7 +156,8 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
           <p>Genres</p>
           <input
             type="text"
-            value={filterData.genres}
+            name="genre"
+            value={filterData.genre}
             onChange={handleValueChange}
           ></input>
         </GPFsubDiv>
@@ -148,19 +169,17 @@ function GamePickForm({ publishers, getPublishers, getGames }) {
 // connect to Redux state
 const mapStateToProps = (state) => {
   return {
-    games: state.games,
-    publishers: state.publishers,
+    publishers: state.datalist.publishers,
+    composers: state.datalist.composers,
   }
 }
 
 // export component
-export default connect(mapStateToProps, { getPublishers, getGames })(
-  GamePickForm,
-)
+export default connect(mapStateToProps, { getDataList, getGames })(GamePickForm)
 
 // styled components
 
-const GamePickFormSection = styled.section`
+const GamePickFormSection = styled.form`
   display: flex
   flex-wrap: wrap
   justify-content: space-around
