@@ -87,7 +87,7 @@ const NavHeader = styled.header`
     border-radius: 10px
     @media (max-width: 800px) {
       flex-direction: column
-      height: 200px
+      height: 150px
     }
     @media (max-width: 620px) {
       height: 450px
@@ -102,6 +102,9 @@ const LogoHeader = styled.h1`
 `
 
 const NavBarNav = styled.nav`
+@media (max-width: 800px) {
+  margin-bottom: 20px
+}
 @media (max-width: 620px) {
   display: flex
   flex-direction: column
