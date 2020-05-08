@@ -1,5 +1,5 @@
 // import dependencies
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
@@ -8,15 +8,22 @@ import GameCard from './GameCard'
 
 // GameList component
 function GameList({ games }) {
+  const [resultsPerPage, setResultsPerPage] = useState(10)
+
   return (
     <GameListSection>
       <ResultsPerPageDiv>
         <span>Results per page</span>
-        <select name="results per page">
-          <option>10</option>
-          <option>25</option>
-          <option>50</option>
-          <option>100</option>
+        <select
+          name="pageresults"
+          value={resultsPerPage}
+          onChange={() => setResultsPerPage(e.target.value)}
+          size={1}
+        >
+          <option value={10}>10</option>
+          <option value={25}>25</option>
+          <option value={50}>50</option>
+          <option value={100}>100</option>
         </select>
       </ResultsPerPageDiv>
       {games.list.map((game) => {
