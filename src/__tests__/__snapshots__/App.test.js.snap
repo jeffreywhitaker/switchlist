@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the App component matches previous snapshot 1`] = `
+<ForwardRef(styled.div)
+  className="appWrapper"
+>
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(NavBar)",
+        "type": [Function],
+      }
+    }
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(GamePickForm)",
+        "type": [Function],
+      }
+    }
+    path="/gamelist"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(GameList)",
+        "type": [Function],
+      }
+    }
+    path="/gamelist"
+  />
+  <Route
+    component={[Function]}
+    path="/about"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Login)",
+        "type": [Function],
+      }
+    }
+    path="/login"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Signup)",
+        "type": [Function],
+      }
+    }
+    path="/signup"
+  />
+  <PrivateRoute
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(UserProfile)",
+        "type": [Function],
+      }
+    }
+    path="/profile"
+  />
+  <Footer />
+</ForwardRef(styled.div)>
+`;
